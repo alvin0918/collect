@@ -7,7 +7,7 @@
  * @param $max_money :每份红包的最大金额
  * @return array
  */
-function redpack($total_money, $total_people, $min_money, $max_money)
+function redpack($total_money, $total_people, $min_money = 0, $max_money = 0)
 {
 
     if (empty($min_money)) $min_money = 0.1;
@@ -50,4 +50,10 @@ function get_rand($start, $end, $max)
         return $tmp;
     }
 
+}
+
+$a = redpack(100, 10);
+foreach ($a as $k => $v)
+{
+    echo $v . PHP_EOL;
 }
