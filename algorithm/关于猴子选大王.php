@@ -16,6 +16,8 @@ function king($n, $m)
         // 剩下的最后一个就是大王了
         return $mokey[0];
     }
+
+    return -1;
 }
 
 // 测试
