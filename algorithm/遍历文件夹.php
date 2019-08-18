@@ -17,6 +17,8 @@ function my_scandir($dir)
         closedir($handle);
         return $files;
     }
+
+    return array();
 }
 
-var_dump(my_scandir('../'));
+var_dump(my_scandir('/Users/alvin/project/collect'));
