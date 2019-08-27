@@ -12,7 +12,7 @@ function filterEmoji($str)
     return $str;
 }
 
-// //对emoji表情转义
+// 对emoji表情转义
 function emoji_encode($str)
 {
     $strEncode = '';
@@ -31,7 +31,7 @@ function emoji_encode($str)
     return $strEncode;
 }
 
-//对emoji表情转反义
+// 对emoji表情转反义
 function emoji_decode($str){
     $strDecode = preg_replace_callback('|\[\[EMOJI:(.*?)\]\]|', function($matches){
         return rawurldecode($matches[1]);
