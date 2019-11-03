@@ -1,0 +1,23 @@
+#!/bin/bash
+#############################################################
+# File Name: ddos_check.sh
+#############################################################
+
+Info_File=/tmp/ddos_check.log
+
+#从连接数获取
+#netstat -lant|awk -F "[ :]+" '/180:80/{clsn[$6]++}END{for(pol in clsn)print pol,clsn[pol]}' >$Info_File
+# 从日志获取
+awk '{hotel[$1]++}END{for(pol in hotel)print pol,hotel[pol]}' access.log|sort -nk2 -r >$Info_File
+
+while read line
+do
+Ip_Add=`echo $line |awk '{print $1}'`
+Access=`echo $line |awk '{print $2}'`
+if [ $Access -ge 10000 ]
+then
+
+#echo $Ip_Add
+iptables -I INPUT -s $Ip_Add -j DROP
+fi
+done <$Info_File
